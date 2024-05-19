@@ -1,0 +1,26 @@
+{
+  "name": "mobile",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@wdio/appium-service": "^8.36.1",
+    "@wdio/cli": "^8.36.1",
+    "@wdio/cucumber-framework": "^8.36.1",
+    "@wdio/local-runner": "^8.36.1",
+    "@wdio/sauce-service": "^8.36.1",
+    "@wdio/spec-reporter": "^8.36.1",
+    "appium": "^2.5.4",
+    "appium-uiautomator2-driver": "^3.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "iosTest": "npx wdio run ./test/configs/wdio.ios.conf.ts",
+    "androidTest": "npx wdio run ./test/configs/wdio.android.conf.ts",
+    "wdio": "npx wdio run ./test/configs/wdio.conf.shared.ts"
+  },
+  "dependencies": {
+    "@wdio/mocha-framework": "^8.36.1",
+    "cucumber": "^6.0.7"
+  }
+}
