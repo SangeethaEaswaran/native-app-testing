@@ -11,6 +11,7 @@ conf.capabilities = [{
     'appium:app': 'storage:filename=SauceLabs-Demo-App.ipa',
     // 'appium:app': '../../app/SauceLabs-Demo-App.ipa',
     "appium:autoGrantPermissions": true,
+    "appium:orientation": "PORTRAIT",
     "appium:autoAcceptAlerts": true, 
     // "appium:autoWebview": true,
     "appium:locationContextEnabled": true, 

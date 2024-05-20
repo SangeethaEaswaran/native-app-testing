@@ -1,0 +1,4 @@
+{
+  "script": "sauce:context=--Step: And I procced to checkout product",
+  "args": []
+}

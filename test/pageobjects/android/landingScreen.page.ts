@@ -16,6 +16,25 @@ class LandingScreenPage {
       }
     
       public async selectAddToCartButton() {
+        try {
+          const windowSize = await driver.getWindowSize();
+          const startX = windowSize.width / 2;
+          const startY = windowSize.height * 0.8; // Start from 80% down the screen
+          const endY = windowSize.height * 0.2;   // Swipe to 20% down the screen
+          console.log('windowSize', windowSize, startX, startY, endY)
+          await driver.touchAction([
+              { action: 'press', x: startX, y: startY },
+              { action: 'moveTo', x: startX, y: endY },
+              'release'
+          ]);
+  
+          console.log('Swipe up action performed successfully');
+      } catch (error) {
+          console.error('Failed to perform swipe up action:', error);
+      } finally {
+        await driver.pause(1000);
+          // Quit the driver
+      }  
         expect(await landingScreenElements.addToCartButton).toBeDisplayed();
         await (await landingScreenElements.addToCartButton).click();
       }
