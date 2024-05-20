@@ -6,7 +6,7 @@ Download and install
 - node.js  v19.9.0  https://nodejs.org/en/download/
 - npm version- v9.6.3( will be installed along with node)
 - IDE of choice (VScode- https://code.visualstudio.com/download) 
-- sauce lab sign in (SAUCE_USERNAME , SAUCE_ACCESS_KEY ) . Note - Saucelabs provides 60 mins of free automated test runs
+- sauce lab sign in (SAUCE_USERNAME , SAUCE_ACCESS_KEY ) ![alt text](image-5.png) . Note - Saucelabs provides 60 mins of free automated test runs
 
 # Usage:
 From the command line terminal 
