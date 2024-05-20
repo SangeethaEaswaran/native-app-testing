@@ -1,9 +1,6 @@
 Feature:ios Saucelab testing
-  Scenario Outline: As a user, I can log into the secure area
-    Given I am on the login page
-    When I login with <username> and <password>
-    Then I should see a flash message saying <message>
-    Examples:
-      | username | password             | message                        |
-      | tomsmith | SuperSecretPassword! | You logged into a secure area! |
-      | foobar   | barfoo               | Your username is invalid!      |
+  Scenario: Test ios app 
+    Given I am on the native ios app
+    When I add product to my cart 
+    And I procced to checkout 
+    Then I should see login screen

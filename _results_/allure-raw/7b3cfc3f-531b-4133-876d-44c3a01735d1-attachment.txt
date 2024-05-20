@@ -1,0 +1,4 @@
+{
+  "script": "sauce:context=-Scenario: Android app",
+  "args": []
+}

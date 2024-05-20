@@ -1,5 +1,8 @@
 import type { Options } from '@wdio/types';
 import * as dotenv from "dotenv";
+import allure from 'allure-commandline';
+import fs from "fs-extra";
+
 dotenv.config({
   path:`./settings/local.env`,
 });
@@ -122,14 +125,14 @@ dotenv.config({
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 0,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: [
-        // 'appium',
+        'appium',
         ['sauce',
         {
             sauceConnect: false,
@@ -161,11 +164,25 @@ dotenv.config({
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: [
+    ['video', {
+        saveAllVideos: true,       // If true, also saves videos for successful test cases
+        videoSlowdownMultiplier: 30, // Higher to get slower videos, lower for faster videos [Value 1-100]
+        videoFormat: 'mp4' 
+    }], ['allure', {
+        outputDir: './_results_/allure-raw',
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+      }],
+    'spec',
+    ],
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./test/step-definitions/steps.ts'],
+        require: [
+            './test/step-definitions/ios/ios.steps.ts',
+            './test/step-definitions/android/android.steps.ts'
+        ],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -204,8 +221,17 @@ dotenv.config({
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare:async function (config, capabilities) {
+        let directories = [
+            // "./_results_/html-reporter",
+            "./allure_results",
+            "./allure-report",
+            "./_results_/allure-raw"
+            ];
+        for (const directory of directories){
+            await fs.emptyDir(directory).then(() => {}).catch((err) => {console.err(err)});
+        }
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -346,8 +372,26 @@ dotenv.config({
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function(exitCode, config, capabilities, results) {
+        const reportError = new Error('Could not generate Allure report');
+        const generation = allure(['generate', './_results_/allure-report', '--clean']);
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function(exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session

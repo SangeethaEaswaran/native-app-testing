@@ -3,15 +3,16 @@ conf.specs = [
     '../features/ios/login.feature'
 ];
 conf.capabilities = [{
-    platformName: "iOS",
-    browserName: 'Safari',
+    platformName : "iOS",
+    // browserName: 'Safari',
     "appium:deviceName": ".*",
-    'appium:platformVersion': "^1[3-6].*",
+    'appium:platformVersion': "^1[3-7].*",
     'appium:automationName': 'XCUITest', 
-    // 'appium:app': 'storage:filename=ApiDemos-debug.apk',
+    'appium:app': 'storage:filename=SauceLabs-Demo-App.ipa',
+    // 'appium:app': '../../app/SauceLabs-Demo-App.ipa',
     "appium:autoGrantPermissions": true,
     "appium:autoAcceptAlerts": true, 
-    "appium:autoWebview": true,
+    // "appium:autoWebview": true,
     "appium:locationContextEnabled": true, 
     "appium:noReset": true,
     "appium:logLevel": 'debug',

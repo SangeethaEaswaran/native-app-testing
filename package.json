@@ -3,6 +3,7 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^18.11.9",
+    "@wdio/allure-reporter": "^8.36.1",
     "@wdio/appium-service": "^8.36.1",
     "@wdio/cli": "^8.36.1",
     "@wdio/cucumber-framework": "^8.36.1",
@@ -17,10 +18,13 @@
   "scripts": {
     "iosTest": "npx wdio run ./test/configs/wdio.ios.conf.ts",
     "androidTest": "npx wdio run ./test/configs/wdio.android.conf.ts",
-    "wdio": "npx wdio run ./test/configs/wdio.conf.shared.ts"
+   "generate-report": "npx allure serve allure-report",
+    "open-report": "npx allure open"
   },
   "dependencies": {
     "@wdio/mocha-framework": "^8.36.1",
-    "cucumber": "^6.0.7"
+    "allure-commandline": "^2.29.0",
+    "cucumber": "^6.0.7",
+    "wdio-video-reporter": "^5.2.0"
   }
 }

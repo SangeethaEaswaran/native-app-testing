@@ -1,14 +1,17 @@
 import { config as conf }  from './wdio.conf.shared.ts';
+
 conf.specs = [
-    '../features/ios/login.feature'
+    '../features/android/login.feature'
 ];
 conf.capabilities = [{
     platformName: 'Android',
-    browserName: 'Chrome',
+    // browserName: 'Chrome',
+    // "browserVersion": "113",
     "appium:deviceName": ".*",
     'appium:platformVersion': "^1[0-3].*",
     'appium:automationName': 'UiAutomator2', 
-    // 'appium:app': 'storage:filename=ApiDemos-debug.apk',
+    'appium:app': 'storage:filename=mda-2.0.1-22.apk',
+    // 'appium:app': '../../app/mda-2.0.1-22.apk',
     "appium:autoGrantPermissions": true,
     "appium:locationContextEnabled": true, 
     "appium:logLevel": 'debug',

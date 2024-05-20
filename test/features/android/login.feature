@@ -1,12 +1,6 @@
 Feature:Android Saucelab testing
-
-  Scenario Outline: As a user, I can log into the secure area
-
-    Given I am on the login page
-    When I login with <username> and <password>
-    Then I should see a flash message saying <message>
-
-    Examples:
-      | username | password             | message                        |
-      | tomsmith | SuperSecretPassword! | You logged into a secure area! |
-      | foobar   | barfoo               | Your username is invalid!      |
+  Scenario: Android app 
+    Given I am on the native android app
+    When I add backpack product to my cart 
+    And I procced to checkout product
+    Then I should see the login screen
