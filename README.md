@@ -25,27 +25,29 @@ Test results are viewed on terminal
 ![alt text](image-4.png)
 
 # Sauce labs 
-App management ![alt text](image.png)
-Appium inspector ![alt text](image-1.png)
-capabilities - https://docs.saucelabs.com/dev/test-configuration-options/#mobile-appium-capabilities
-Saucelabs Test results - ![alt text](image-3.png)
-Example Sauce lab mobile run videos can be seen in /sample-video-sauce folder 
+- App management: Upload the apps to be tested here 
+ ![alt text](image.png)
+- Appium inspector: To find the elements for automation 
+![alt text](image-1.png)
+- Saucelabs Test results - Test runs and the logs can be seen here 
+ ![alt text](image-3.png)
+- Example Sauce lab mobile run videos can be seen under /sample-video-sauce folder in this framework
+- capabilities - https://docs.saucelabs.com/dev/test-configuration-options/#mobile-appium-capabilities
+
+
 
 # packages used
-@wdio/mocha-framework - A WebdriverIO plugin. Adapter for Mocha testing framework.
-cucumber- A tool for running automated tests written in plain language
-appium-uiautomator2-driver-  test automation framework for Android devices(emulators, real device)  automates native, hybrid and mobile web apps
-@types/node - This package contains type definitions for node 
-@wdio/allure-reporter
-@wdio/appium-service
-@wdio/cli
-@wdio/cucumber-framework
-@wdio/local-runner
-@wdio/sauce-service
-@wdio/spec-reporter
-appium
-ts-node
-typescript
-wdio-video-reporter
-allure-commandline
-
+- @wdio/mocha-framework - A WebdriverIO plugin. Adapter for Mocha testing framework.
+- cucumber- A tool for running automated tests written in plain language
+- appium-uiautomator2-driver-  test automation framework for Android devices(emulators, real device)  automates native, hybrid and mobile web apps
+- @types/node - This package contains type definitions for node 
+- @wdio/sauce-service - A WebdriverIO service. It updates the job metadata ('name', 'passed', 'tags', 'public', 'build', 'custom-data') and runs Sauce Connect if desired
+- @wdio/cli - WebdriverIO testrunner command line interface
+- @wdio/cucumber-framework - A WebdriverIO plugin. Adapter for CucumberJS v5 testing framework.
+- @wdio/local-runner - A WebdriverIO runner to run tests locally within worker processes
+- @wdio/spec-reporter- A WebdriverIO plugin to report in spec style.
+- appium - Appium is an open-source automation framework that provides WebDriver-based automation possibilities for a wide range of different mobile, desktop and IoT platforms
+- ts-node - ts-node is a TypeScript execution engine and REPL for Node.js.
+- typescript - adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser
+- @wdio/allure-reporter A WebdriverIO reporter plugin to create Allure Test Reports.
+- wdio-video-reporter  generates videos of your test executions
