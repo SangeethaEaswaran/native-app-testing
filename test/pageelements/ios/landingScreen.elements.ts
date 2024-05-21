@@ -7,7 +7,7 @@ class LandingScreenElement {
   }
   get productScreenTitle() {
     return $(
-      '//XCUIElementTypeOther[@name="ProductDetails-screen"]/XCUIElementTypeOther[1]'
+      '//XCUIElementTypeOther[@name="ProductDetails-screen"]/XCUIElementTypeOther[1]',
     );
   }
   get sauceBackPack() {

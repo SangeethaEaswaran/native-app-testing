@@ -1,4 +1,4 @@
-import landingScreenElements from "../../pageelements/ios/landingScreen.elements.ts";
+import landingScreenElements from '../../pageelements/ios/landingScreen.elements.ts';
 class LandingScreenPage {
   public async verifyLandingScreen() {
     // console.log("verifyLandingScreen", landingScreenElements);
