@@ -18,7 +18,7 @@
   "scripts": {
     "iosTest": "npx wdio run ./test/configs/wdio.ios.conf.ts",
     "androidTest": "npx wdio run ./test/configs/wdio.android.conf.ts",
-   "generate-report": "npx allure serve allure-report",
+   "generate-report": "npx allure serve ./output/allure-results --clean",
     "open-report": "npx allure open"
   },
   "dependencies": {

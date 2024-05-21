@@ -24,6 +24,8 @@ From the command line terminal
 Test results are viewed on terminal
 1. Spec reporter : 
 ![alt text](image-4.png)
+2. Allure reporter : 
+![alt text](image-7.png)
 
 # Sauce labs 
 - App management: Upload the apps to be tested here 

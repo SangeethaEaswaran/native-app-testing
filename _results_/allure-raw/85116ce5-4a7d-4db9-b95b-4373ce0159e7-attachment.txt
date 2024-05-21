@@ -1,4 +1,0 @@
-{
-  "script": "sauce:context=--Step: When I add backpack product to my cart",
-  "args": []
-}

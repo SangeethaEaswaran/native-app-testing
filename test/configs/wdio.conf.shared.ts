@@ -115,7 +115,7 @@ dotenv.config({
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://google.com',
+    baseUrl: '/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -168,9 +168,10 @@ dotenv.config({
     ['video', {
         saveAllVideos: true,       // If true, also saves videos for successful test cases
         videoSlowdownMultiplier: 30, // Higher to get slower videos, lower for faster videos [Value 1-100]
-        videoFormat: 'mp4' 
+        videoFormat: 'mp4' ,
+        outputDir: "./output/video-reports/",
     }], ['allure', {
-        outputDir: './_results_/allure-raw',
+        outputDir: './output/allure-results',
         disableWebdriverStepsReporting: false,
         disableWebdriverScreenshotsReporting: false,
       }],
@@ -224,9 +225,10 @@ dotenv.config({
     onPrepare:async function (config, capabilities) {
         let directories = [
             // "./_results_/html-reporter",
-            "./allure_results",
-            "./allure-report",
-            "./_results_/allure-raw"
+            // "./allure_results",
+            // "./allure-report",
+            "./output/allure-results",
+            "./output/video-reports"
             ];
         for (const directory of directories){
             await fs.emptyDir(directory).then(() => {}).catch((err) => {console.err(err)});
@@ -374,7 +376,7 @@ dotenv.config({
      */
     onComplete: function(exitCode, config, capabilities, results) {
         const reportError = new Error('Could not generate Allure report');
-        const generation = allure(['generate', './_results_/allure-report', '--clean']);
+        const generation = allure(['generate', './output/allure-results', '--clean']);
         return new Promise((resolve, reject) => {
             const generationTimeout = setTimeout(
                 () => reject(reportError),
